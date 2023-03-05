@@ -1,0 +1,1033 @@
+/* FONT IMPORTS */
+
+@font-face {
+  font-family: cryptidFont;
+  src: url('./fonts/Ghastly\ Panic.ttf');
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+  @font-face {
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+/* RESET */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.App {
+  width: 100%;
+  min-height: 1100px;
+}
+
+/* CSS VARIABLES */
+
+/* COLOR THEME VARIABLES */
+
+:root {
+  --color: darkseagreen;
+}
+
+/* HEADER */
+
+.App-header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+
+/* THEME CHANGER */
+
+.changeTheme {
+  position: relative;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+  width: 100%;
+  height: 5rem;
+  z-index: 20;
+}
+
+.themeButton {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  margin: .3rem;
+  border: 1px solid white;
+  background-color: var(--palette);
+}
+
+.themeButton:hover {
+  cursor: pointer;
+}
+
+#DarkOrange {
+  background-color: DarkOrange;
+}
+
+#DarkSeaGreen {
+  background-color: darkseagreen;
+}
+
+#LightSkyBlue {
+  background-color: lightskyblue;
+}
+
+#LightPink {
+  background-color: lightpink;
+}
+
+/* SEARCH BAR */
+
+#searchform {
+  font-family: Quicksand;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  font-size: 3rem;
+  min-height: 3rem;
+  padding: 2rem;
+  color: white;
+  background-color: black;
+  background-image: url(./images/spinning-alien.gif);
+  background-position: 100% 10%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+#searchLabel {
+  display: inline;
+}
+
+#searchLabel:hover {
+  cursor: pointer;
+}
+
+#searchLabel::before {
+  content: '';
+  position: absolute;
+  top: 5.5rem;
+  left: 2rem;
+  height: .4rem;
+  width: 0;
+  background-color: var(--color);
+  transition: 1s all;
+}
+
+#search {
+  font-family: Quicksand;
+  font-size: 3rem;
+  /*background-color: black;*/
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--color);
+  max-width: 60%;
+  overflow-x: scroll;
+}
+
+.user-welcome {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2rem;
+  font-size: 1.2rem;
+  color: var(--color);
+}
+
+/* User Alien Icon */
+
+.user-welcome:before,
+.login-for-shortcuts:before {
+  content: '';
+  position: absolute;
+  left: -3rem;
+  top: -.3rem;
+  height: 2rem;
+  width: 2rem;
+  background-image: url('./images/alien.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: center;
+}
+
+.login-for-shortcuts:before {
+  filter: invert(1);
+}
+
+/* SHORTCUT BAR */
+
+.icon-warning-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #00000088;
+  z-index: 100;
+}
+
+.icon-warning {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 70%;
+  min-height: 180px;
+  padding: 3rem;
+  color: black;
+  background-color: var(--color);
+  border-radius: 8px;
+}
+
+.icon-warning > p {
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
+}
+
+.close-window-button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  width: 6rem;
+  padding: .5rem;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  transition: .5s all;
+  margin-top: 2rem;
+}
+
+#link-to-image {
+  text-decoration: none;
+  position: absolute;
+  bottom: 1rem;
+  right: 7.6rem;
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  width: 9rem;
+  padding: .5rem;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  transition: .5s all;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+.close-window-button:hover,
+.link-to-image:hover {
+  cursor: pointer;
+  color: black;
+  background-color: var(--color);
+  border: 2px solid black;
+}
+
+.navigation-shortcuts {
+  position: relative;
+  width: 100%;
+  height: 4rem;
+  background-color: var(--color);
+  overflow: hidden;
+  z-index: 20;
+}
+
+.navigation-shortcuts ul {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.navigation-shortcuts ul li {
+  display: inline;
+  padding: 0 13% 0 0;
+  list-style: none;
+}
+
+/* SHORTCUT ICONS */
+
+.shortcut-icon {
+  position: relative;
+  height: 2.5rem;
+  width: 2.5rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  transition: .5s all;
+}
+
+.active-icon {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
+#Ghost {
+  background-image: url("./images/icons/Ghost.png");
+}
+
+#Alien {
+  background-image: url("./images/icons/Alien.png");
+}
+
+#UFO {
+  background-image: url("./images/icons/UFO.png");
+}
+
+#Bigfoot {
+  background-image: url("./images/icons/Bigfoot.png");
+}
+
+#Cryptids {
+  background-image: url("./images/icons/Cryptids.png");
+}
+
+#Telekinesis {
+  background-image: url("./images/icons/Telekinesis.png");
+}
+
+#WendigoStories {
+  background-image: url("./images/icons/WendigoStories.png")
+}
+
+#Mothman {
+  background-image: url("./images/icons/Mothman.png");
+}
+
+#Lochnessmonster {
+  background-image: url("./images/icons/Lochnessmonster.png");
+}
+
+#Alienabduction {
+  background-image: url("./images/icons/Alienabduction.png");
+}
+
+#Crawlersightings {
+  background-image: url("./images/icons/Crawlersightings.png");
+}
+
+#Cryptozoology {
+  background-image: url("./images/icons/Cryptozoology.png");
+}
+
+#Humanoidencounters {
+  background-image: url("./images/icons/Humanoidencounters.png");
+}
+
+/* FILTER RESULTS BAR */
+
+#filterResults {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #222222;
+  color: white;
+  font-size: 2rem;
+  font-family: Quicksand;
+  min-height: 2rem;
+  box-shadow: 4px 0 10px #333333;
+  z-index: 5;
+}
+
+#filterLabel {
+  margin-right: 1rem;
+}
+
+#filterInput {
+  width: auto;
+  overflow: hidden;
+  background-color: #222222;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  color: var(--color);
+}
+
+/* MAIN */
+
+#App-main-content {
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  overflow-y: scroll;
+}
+
+/* ARTICLES */
+
+#articles {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-auto-columns: 100%;
+  justify-content: center;
+  align-content: start;
+}
+
+article {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background-color: #333333;
+  color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: none;
+  margin: 1rem auto;
+  height: 16rem;
+  width: 75%;
+  text-align: center;
+  transition: .5s all;
+}
+
+article:hover {
+  cursor: pointer;
+  width:80%;
+  box-shadow: 0 0 1rem #000000EE;;
+}
+
+article h3 {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin: 1.5rem;
+  font-size: 1rem;
+  color: white;
+  transition: 1s all;
+}
+
+.full-article-bg {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-auto-columns: 100%;
+  place-items: center;
+  background-color: #000000a0;
+  z-index: 500;
+}
+
+.full-article-panel {
+  position: relative;
+  width: 80%;
+  max-width: 1000px;
+  height: auto;
+  min-height: 340px;
+  max-height: 680px;
+  border-radius: 8px;
+  word-wrap: break-word;
+  overflow-y: hidden;
+  background-color: var(--color);
+  z-index: 20;
+}
+
+.full-article-gradient {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, transparent, var(--color) 30%);
+
+}
+
+.full-article-panel > h3,
+.full-article-panel > p {
+  position: relative;
+  right: 0;
+  width: auto;
+  text-align: right;
+  margin-left: 30%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.full-article-link-to-reddit-container {
+  position: relative;
+  right: 1rem;
+}
+
+#full-article-link-to-reddit {
+  cursor: pointer;
+  position: absolute;
+  display: grid;
+  align-items: center;
+  width: 8rem;
+  right: 1rem;
+  text-align: right;
+  color: white;
+  text-decoration: none;
+  margin-right: 4rem;
+  margin-top: 1rem;
+}
+
+#full-article-link-to-reddit:before {
+  content: '';
+  position: absolute;
+  right: -4rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  background-color: white;
+  background-image: url('./images/reddit-face.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  transition: .5s all;
+}
+
+.full-article-panel > img {
+  position: absolute;
+  left:0;
+  top:0;
+  height: 100%;
+  /* max-height: 20rem;
+  max-width: 90%;*/
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  margin-bottom: 1rem;
+  z-index: -1;
+}
+
+.full-article-text {
+  position: relative;
+  width: 100%;
+  /* Must not have a parent with 100% available width as right: 0 positions in middle */
+  height: auto;
+  max-height: 10rem;
+  overflow-y: scroll;
+  margin-left: 0;
+}
+
+.full-article-text::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.up-down-display {
+  position: absolute;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  color: black;
+  top: 1rem;
+  left: 0rem;
+  padding-left: 1rem;
+  background-image: linear-gradient(to right, #FFFFFFAA, #FFFFFFAA 60%, transparent);
+  width: 5rem;
+}
+
+.ups,
+.downs {
+  font-size: 1.2rem;
+  display: inline;
+}
+
+.up-down-icon {
+  position: relative;
+  display: inline-block;
+  height: 1.2rem;
+  width: 1.2rem;
+  background-image: url(./images/updown.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ADD ICON LIBRARY SIDEBAR */
+
+footer {
+  position: sticky;
+  width: 100%;
+  min-height: 5.3rem;
+  bottom: 0;
+  right: 0;
+  z-index: 40;
+}
+
+#shortcutLibrary {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  max-height: 60%;
+  width: 25rem;
+  background-color: var(--color);
+  font-family: Quicksand;
+  font-size: 1rem;
+  color: black;
+  padding: 2rem;
+  border-top-left-radius: 8px;
+  border-left: .3rem solid rgb(38, 37, 37);
+  border-top: .3rem solid rgb(38, 37, 37);
+  overflow: scroll;
+}
+
+#shortcutLibrary::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.shortcuts-to-add-menu-icon {
+  display: inline-block;
+  position: relative;
+  top: .2rem;
+  margin-right: .5rem;
+  height: 1.2rem;
+  width: 1.2rem;
+  background-image: url('./images/circle-menu.png');
+  background-size: contain;
+  background-origin: center;
+  background-repeat: no-repeat;
+}
+
+#shortcutLibrary h3 {
+  cursor: pointer;
+}
+
+#shortcutLibrary h3:hover {
+  color: white;
+}
+
+.logout {
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  padding: .3rem;
+  font-size: 1rem;
+  border-radius: .3rem;
+  margin: 2rem 0;
+  max-width: 5rem;
+  text-align: center;
+}
+
+.logout:hover {
+  cursor: pointer;
+  border: 2px solid black;
+  background-color: red;
+  color: white;
+}
+
+#shortcutLibrary ul li {
+  position: relative;
+  list-style: none;
+  margin: 2rem 0;
+}
+
+.addIconText {
+  cursor: pointer;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  right: 5%;
+  text-align: right;
+}
+
+.addIconText:hover {
+  color: white;
+}
+
+.addIconText::after {
+  display: none;
+  content:'+';
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  right: -2rem;
+}
+
+.addIconText:hover::after{
+  display: inline;
+}
+
+.edit-shortcuts-button {
+  position: relative;
+  width: 70%;
+  right: 0;
+  padding: .3rem;
+  background-color: rgba(155, 40, 63, 0.479);
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.edit-shortcuts-button:hover {
+  cursor: pointer;
+  background-color: crimson;
+}
+
+.remove-icon-cross {
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 0rem 0rem .3rem crimson;
+}
+
+.please-login-signup {
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.signin-link,
+.login-link {
+  color: white;
+}
+
+.signin-link:hover,
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* EXPAND TEXT BAR */
+
+.expand-text {
+  position: absolute;
+  bottom: -0.5rem;
+  justify-self: center;
+  color: #333333;
+  font-size: 2rem;
+  font-family: Quicksand;
+  z-index: 5;
+  opacity: 0;
+  transition: .5s all;
+}
+
+article::after {
+  content: 'Open';
+  color: black;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color);
+  height: 3rem;
+  width: 0;
+  opacity: 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  transition: 1s all;
+}
+
+article:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+
+/* LINK TO REDDIT */
+
+.redditLink {
+  position: absolute;
+  right: 0;
+  top: 20%;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}
+
+.to-reddit {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  background-color: var(--color);
+  height: 4rem;
+  width: 4rem;
+  border-radius: 2rem;
+  transition: .5s all;
+}
+
+.to-reddit::before {
+  content: '';
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  background-color: white;
+  background-image: url('./images/reddit-face.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  transition: .5s all;
+}
+
+.to-reddit::after {
+  content: 'to Reddit!';
+  color: var(--color);
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  opacity: 0;
+  transition: .5s all;
+}
+
+/* LOGIN FORM */
+
+.login-panel {
+  position: fixed;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  z-index: 101;
+}
+
+.login-panel > form {
+  position: relative;
+  width: 90%;
+  height: auto;
+  padding: 2rem;
+  color: white;
+  background-color: var(--color);
+  border: .3rem solid rgb(38, 37, 37);
+  border-radius: 1rem;
+}
+
+.login-panel > form > h4 {
+  font-size: 3rem;
+}
+
+.login-panel > form > input {
+  display: block;
+  width: 90%;
+  padding: .5rem;
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+.login-panel > form > label {
+  display: block;
+  margin: 1rem 0;
+}
+
+.login-panel > form > p {
+  margin: 1rem 0;
+  font-size: 1rem;
+  padding: .2rem;
+}
+
+.login-panel > form > button {
+  margin: 1rem 0;
+  padding: .2rem;
+  background-color: black;
+  color: var(--color);
+  font-size: 1rem;
+  border: none;
+  border-radius: .5rem;
+  padding: .5rem;
+  transition: .4s all;
+}
+
+.login-panel > form > button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.close-login-signup {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  right: 1rem;
+  top: 1rem;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  color: white;
+  background-color: rgb(138, 31, 31);
+}
+
+.close-login-signup:hover {
+  background-color: rgb(182, 49, 49);
+  border: .1rem solid white;
+}
+
+.form-error {
+  color: rgb(110, 24, 24);
+  padding: .2rem;
+  background-color: rgb(183, 104, 104);
+  border: 2px solid rgb(110, 24, 24);
+  border-radius: .2rem;
+  margin: 1rem 0;
+}
+
+/* ARTICLE REGULAR TEXT */
+
+article > p {
+  margin: 1rem;
+}
+
+.login-for-shortcuts {
+  position: absolute;
+  left: 5rem;
+  top: 1.3rem;
+  color: black;
+  font-size: 1rem;
+}
+
+/* DESKTOP ONLY */
+
+@media only screen and (min-width: 1500px){
+
+  #searchLabel:hover::before{
+    width: 9rem;
+  }
+
+  .to-reddit:hover{
+    right: -3rem;
+    width: 12rem;
+    height: 6rem;
+    border-radius: 3rem;
+  }
+
+  .to-reddit:hover::before {
+    background-position: 10% 50%;
+    background-size: 40%;
+    width: 11rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+  }
+
+  .to-reddit:hover::after {
+    opacity: 1;
+    text-indent: 5rem;
+  }
+  
+}
+
+/* FOR SHORTCUT ICON BREAKING POINT*/
+
+@media only screen and (max-width: 550px){
+
+  .shortcut-icon {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .navigation-shortcuts ul {
+    padding-left: 1rem;
+  }
+
+}
+
+/* MOBILE ONLY */
+
+@media only screen and (max-width: 390px){
+
+  #searchform {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  #search {
+    font-size: 1.5rem;
+  }
+
+  #filterResults {
+    font-size: 1.5rem;
+    padding: 1rem 1rem;
+  }
+
+  #filterInput {
+    font-size: 1.5rem;
+  }
+
+  #shortcutLibrary {
+    max-width: 20rem;
+    max-height: 26rem;
+    overflow-y: scroll;
+  }
+
+  .user-welcome {
+    font-size: .8rem;
+  }
+
+  .user-welcome:before {
+    width: 1rem;
+    height: 1rem;
+    left: -1.5rem;
+    top: -.1rem;
+  }
+
+}
+
+@media only screen and (max-width: 756px){
+
+  .full-article-panel {
+    height: 80%;
+    width: 90%;
+  }
+
+}
+
+@media only screen and (orientation: landscape) and (max-height: 500px){
+  .full-article-panel {
+    height: 90%;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-height: 920px){
+  .full-article-panel {
+    position: absolute;
+    height: 80%;
+    top: 3rem;
+  }
+}
+
+@media only screen and (max-height: 840px){
+  .full-article-panel {
+    position: absolute;
+    height: 60%;
+    top: 3rem;
+  }
+}
+
+@media only screen and (max-height: 600px){
+  .App-header {
+    position: static;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  #searchform {
+    background-image: none;
+  }
+}
